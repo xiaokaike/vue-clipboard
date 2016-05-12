@@ -13,6 +13,8 @@
   },
   "bugs": "https://github.com/xiaokaike/vue-clipboard/issues",
   "dependencies": {
+    "highlightjs": "^8.7.0",
+    "primer-css": "^3.0.1"
   },
   "devDependencies": {
     "uglify-js": "^2.6.2",

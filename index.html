@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="node_modules/primer-css/css/primer.css">
+  <link rel="stylesheet" href="example/example.css">
+</head>
+
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>vue-clipboard</h1>
+      <p class="buttons">
+        <a href="https://github.com/greyby/vue-spinner" class="button">Source on GitHub</a>
+      </p>
+    </header>
+    <main class="wrapper">
+      <div class="example">
+        <div class="input-group">
+          <input class="form-control" type="text" v-model="datacopy">
+          <span class="input-group-button">
+                <button class="btn" 
+                  type="button"
+                  :class="{'tooltipped': showTips, 'tooltipped-s': showTips}"
+                  v-clipboard:copy="datacopy" 
+                  :success="copySucess" 
+                  :error="copyError" 
+                  @mouseleave="handlerL"
+                  aria-label="{{arialabel}}">
+                    <img class="clippy" src="example/clippy.svg" width="13" alt="Copy to clipboard">
+                </button>
+            </span>
+        </div>
+      </div>
+
+      <div id="example-action" class="example">
+        <div class="input-group">
+          <textarea class="form-control" cols="62" rows="5" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" v-model="datacut"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn" 
+            type="button"
+            :class="{'tooltipped': showTips, 'tooltipped-s': showTips}"
+            v-clipboard:cut="datacut" 
+            :success="copySucess" 
+            :error="copyError" 
+            @mouseleave="handlerL"
+            aria-label="{{arialabel}}">
+            Cut to clipboard
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="example/example.build.js"></script>
+</body>
+
+</html>
