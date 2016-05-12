@@ -1,3 +1,2 @@
-node_modules/*
-!node_modules/primer-css
+node_modules
 .DS_Store

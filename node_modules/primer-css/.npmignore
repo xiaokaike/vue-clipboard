@@ -1,9 +1,0 @@
-.bundle/config
-bin/
-vendor/
-.sass-cache/
-vendor/
-.ruby-version
-_site/
-node_modules/
-.DS_Store
