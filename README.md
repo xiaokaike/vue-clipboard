@@ -11,7 +11,10 @@
 $ npm install vue-clipboard
 ```
 
-### CommonJS
+## Usage
+
+#### Using the `v-touch` directive
+
 ```js
 var VueClipboard = require('vue-clipboard')
 
@@ -25,6 +28,6 @@ new Vue({
 ```
 
 ```html
-<button v-clipboard:copy="copyData"></button>
+<button v-clipboard:copy="copyData">Copy</button>
 
 ```
