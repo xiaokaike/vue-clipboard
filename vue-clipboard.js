@@ -18,6 +18,7 @@
 
       unbind: function() {
         Vue.util.off(this.el, 'click', this.handler)
+        this.removeFake()
       },
 
       handler: function() {
@@ -33,32 +34,32 @@
        */
 
       selectFake: function(text) {
-        var isRTL = document.documentElement.getAttribute('dir') == 'rtl';
+        var isRTL = document.documentElement.getAttribute('dir') == 'rtl'
 
-        this.removeFake();
+        this.removeFake()
 
-        this.fakeHandler = document.body.addEventListener('click', this.removeFake.bind(this));
+        this.fakeHandler = document.body.addEventListener('click', this.removeFake.bind(this))
 
-        this.fakeElem = document.createElement('textarea');
+        this.fakeElem = document.createElement('textarea')
         // Prevent zooming on iOS
-        this.fakeElem.style.fontSize = '12pt';
+        this.fakeElem.style.fontSize = '12pt'
         // Reset box model
-        this.fakeElem.style.border = '0';
-        this.fakeElem.style.padding = '0';
-        this.fakeElem.style.margin = '0';
+        this.fakeElem.style.border = '0'
+        this.fakeElem.style.padding = '0'
+        this.fakeElem.style.margin = '0'
         // Move element out of screen horizontally
-        this.fakeElem.style.position = 'fixed';
-        this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
+        this.fakeElem.style.position = 'fixed'
+        this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px'
         // Move element to the same position vertically
-        this.fakeElem.style.top = (window.pageYOffset || document.documentElement.scrollTop) + 'px';
-        this.fakeElem.setAttribute('readonly', '');
-        this.fakeElem.value = text;
+        this.fakeElem.style.top = (window.pageYOffset || document.documentElement.scrollTop) + 'px'
+        this.fakeElem.setAttribute('readonly', '')
+        this.fakeElem.value = text
 
-        document.body.appendChild(this.fakeElem);
+        document.body.appendChild(this.fakeElem)
 
-        this.selectedText = select(this.fakeElem);
+        this.selectedText = select(this.fakeElem)
 
-        this.copyText();
+        this.copyText()
       },
 
       /**
@@ -67,13 +68,13 @@
        */
       removeFake: function() {
         if (this.fakeHandler) {
-          document.body.removeEventListener('click');
-          this.fakeHandler = null;
+          document.body.removeEventListener('click')
+          this.fakeHandler = null
         }
 
         if (this.fakeElem) {
-          document.body.removeChild(this.fakeElem);
-          this.fakeElem = null;
+          document.body.removeChild(this.fakeElem)
+          this.fakeElem = null
         }
       },
 
@@ -81,13 +82,13 @@
        * Executes the copy operation based on the current selection.
        */
       copyText: function() {
-        var succeeded;
+        var succeeded
         try {
-          succeeded = document.execCommand('copy');
+          succeeded = document.execCommand('copy')
         } catch (err) {
-          succeeded = false;
+          succeeded = false
         }
-        this.handleResult(succeeded);
+        this.handleResult(succeeded)
       },
       handleResult: function(succeeded) {
         if (succeeded) {
@@ -100,29 +101,29 @@
   }
 
   function select(element) {
-    var selectedText;
+    var selectedText
 
     if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
-      element.focus();
-      element.setSelectionRange(0, element.value.length);
+      element.focus()
+      element.setSelectionRange(0, element.value.length)
 
-      selectedText = element.value;
+      selectedText = element.value
     } else {
       if (element.hasAttribute('contenteditable')) {
-        element.focus();
+        element.focus()
       }
 
-      var selection = window.getSelection();
-      var range = document.createRange();
+      var selection = window.getSelection()
+      var range = document.createRange()
 
-      range.selectNodeContents(element);
-      selection.removeAllRanges();
-      selection.addRange(range);
+      range.selectNodeContents(element)
+      selection.removeAllRanges()
+      selection.addRange(range)
 
-      selectedText = selection.toString();
+      selectedText = selection.toString()
     }
 
-    return selectedText;
+    return selectedText
   }
 
   if (typeof exports == "object") {
