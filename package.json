@@ -1,0 +1,26 @@
+{
+  "name": "vue-clipboard",
+  "version": "0.0.1",
+  "main": "vue-clipboard.js",
+  "files": [
+    "vue-clipboard.js"
+  ],
+  "description": "Hammer.js based clipboard events plugin for Vue.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaokaike/vue-clipboard.git"
+  },
+  "bugs": "https://github.com/xiaokaike/vue-clipboard/issues",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "uglify-js": "^2.6.2",
+    "vue": "^1.0.16",
+    "webpack": "^1.12.12"
+  },
+  "scripts": {
+    "build": "webpack example/example.js example/example.build.js && uglifyjs vue-clipboard.js -c -m > vue-clipboard.min.js",
+    "dev": "webpack --watch example/example.js example/example.build.js"
+  }
+}
