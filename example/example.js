@@ -8,13 +8,13 @@ new Vue({
   data: {
     datacopy: 'https://github.com/xiaokaike/vue-clipboard.git',
     showTips: false,
-    arialabel: 'Copyed!',
+    arialabel: 'Copied!',
     datacut: 'Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga.'
   },
   methods: {
     copySucess: function (e){
       console.log('copy sucess')
-      this.arialabel = 'Copyed!'
+      this.arialabel = 'Copied!'
       this.showTips = true
     },
     copyError: function (e){
